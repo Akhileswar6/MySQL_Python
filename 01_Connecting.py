@@ -1,5 +1,8 @@
-""" To install the Python-mysql-connector module, one must have Python and PIP, preinstalled on their system. If Python and pip are already installed type the below command in the terminal."""
-# pip3 install mysql-connector-python
+""" To install the Python-mysql-connector module,
+one must have Python and PIP, preinstalled on their system.
+If Python and pip are already installed type the below command in the terminal."""
+
+# cmd -> pip3 install mysql-connector-python
 
 
 """Connecting to MySQL Server"""
