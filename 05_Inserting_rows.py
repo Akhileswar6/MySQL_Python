@@ -1,4 +1,5 @@
 # Example 2: Inserting Multiple Rows
+
 # importing required libraries
 import mysql.connector
  
@@ -6,13 +7,13 @@ dataBase = mysql.connector.connect(
   host ="localhost",
   user ="root",
   passwd ="Akhil@0109",
-  database = "gfg"
+  database = "akhildb"
 )
 
 # preparing a cursor object
 cursorObject = dataBase.cursor()
  
-sql = "INSERT INTO STUDENT (NAME, BRANCH, ROLL, SECTION, AGE)\
+sql = "INSERT INTO student1 (NAME, BRANCH, ROLL, SECTION, AGE)\
 VALUES (%s, %s, %s, %s, %s)"
 val = [("Nikhil", "CSE", "98", "A", "18"),
        ("Nisha", "CSE", "99", "A", "18"),
