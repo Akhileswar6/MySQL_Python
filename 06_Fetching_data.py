@@ -1,4 +1,4 @@
-# Fetching Data
+""" Fetching Data """
 
 # In order to select particular attribute columns from a table, we write the attribute names.
 # SELECT attr1, attr2 FROM table_name
