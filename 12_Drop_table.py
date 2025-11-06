@@ -1,5 +1,8 @@
-# Drop Tables
+""" Drop Tables -> The DROP TABLE statement is used to drop an existing table in a database. 
+ It removes the table definition and all associated data, indexes, triggers, constraints, and permission specifications for that table."""
+ 
 # Example 1: Drop Table in MySQL using Python
+
 # importing required libraries
 import mysql.connector
  
