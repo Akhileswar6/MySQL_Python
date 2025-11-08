@@ -3,18 +3,23 @@ For this, we will first create a cursor() object and will then pass the SQL comm
 
 # Creating MySQL database with Python
 
-# importing required libraries
 import mysql.connector
  
+# Connect to MySQL Server
 dataBase = mysql.connector.connect(
   host ="localhost",
   user ="root",
   passwd ="Akhil@0109"
 )
 
-# preparing a cursor object
+# Create a cursor object to execute SQL queries
 cursorObject = dataBase.cursor()
 
-# creating database
-cursorObject.execute("CREATE DATABASE AkhilDB")
+# Create a new database
+cursorObject.execute("CREATE DATABASE StudentDB")
+
+print("✅ Database 'StudentDB' created successfully!")
+
+dataBase.close()
+
 
