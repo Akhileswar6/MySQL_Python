@@ -2,12 +2,13 @@
 one must have Python and PIP, preinstalled on their system.
 If Python and pip are already installed type the below command in the terminal."""
 
-# cmd -> pip3 install mysql-connector-python
+# cmd -> pip install mysql-connector-python
+# cmd -> pip show mysql-connector-python
 
 
 """Connecting to MySQL Server"""
 
-# importing required libraries
+
 import mysql.connector
  
 dataBase = mysql.connector.connect(
@@ -16,7 +17,11 @@ dataBase = mysql.connector.connect(
   passwd ="Akhil@0109"
 )
 
-print(dataBase)
+ 
+if dataBase.is_connected():
+    db_Info = dataBase.get_server_info()
+    print("Connected to MySQL Server version ", db_Info)
+    print("Connection established successfully \n")
  
 # Disconnecting from the server
 dataBase.close()

@@ -1,29 +1,31 @@
 """ Creating Tables -> Creating MySQL table using Python """
 
-# importing required libraries
 import mysql.connector
  
+# Connect to the database you created
 dataBase = mysql.connector.connect(
   host ="localhost",
   user ="root",
   passwd ="Akhil@0109",
-  database = "akhildb"
+  database = "studentdb"
 )
 
-# preparing a cursor object
+# Create a cursor object
 cursorObject = dataBase.cursor()
  
 # creating table 
-studentRecord = """CREATE TABLE STUDENT1 (
-                   NAME  VARCHAR(20) NOT NULL,
-                   BRANCH VARCHAR(50),
-                   ROLL INT PRIMARY KEY,
-                   SECTION VARCHAR(5),
-                   AGE INT
+studenttable = """CREATE TABLE students (
+                   student_id INT AUTO_INCREMENT PRIMARY KEY,
+                   name VARCHAR(100),
+                   branch VARCHAR(50),
+                   roll_no INT,
+                   marks INT
                    )"""
  
 # table created
-cursorObject.execute(studentRecord) 
+cursorObject.execute(studenttable)
+
+print("✅ Table 'students' created successfully in 'studentdb' database.")
  
 # disconnecting from server
 dataBase.close()
