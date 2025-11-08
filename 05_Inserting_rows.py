@@ -1,30 +1,36 @@
 # Example 2: Inserting Multiple Rows
 
-# importing required libraries
 import mysql.connector
  
+# Connect to the StudentDB database
 dataBase = mysql.connector.connect(
   host ="localhost",
   user ="root",
   passwd ="Akhil@0109",
-  database = "akhildb"
+  database = "studentdb"
 )
 
-# preparing a cursor object
+# Create a cursor object
 cursorObject = dataBase.cursor()
  
-sql = "INSERT INTO student1 (NAME, BRANCH, ROLL, SECTION, AGE)\
-VALUES (%s, %s, %s, %s, %s)"
-val = [("Nikhil", "CSE", "98", "A", "18"),
-       ("Nisha", "CSE", "99", "A", "18"),
-       ("Rohan", "MAE", "43", "B", "20"),
-       ("Amit", "ECE", "24", "A", "21"),
-       ("Anil", "MAE", "45", "B", "20"), 
-       ("Megha", "ECE", "55", "A", "22"), 
-       ("Sita", "CSE", "95", "A", "19")]
+insert_query = """INSERT INTO students (name, branch, roll_no, marks) 
+VALUES (%s, %s, %s, %s)"""
+
+# List of tuples containing multiple student records
+student_data = [
+    ("Rohit", "ECE", 102, 88),
+    ("Sneha", "MECH", 103, 91),
+    ("Kiran", "CSE", 104, 85),
+    ("Divya", "IT", 105, 90)
+]
+
   
-cursorObject.executemany(sql, val)
+cursorObject.executemany(insert_query, student_data)
+
+# Commit the changes
 dataBase.commit()
-  
-# disconnecting from server
+
+print(f"✅ {cursorObject.rowcount} records inserted successfully into 'students' table!")
+
+# Close the connection
 dataBase.close()

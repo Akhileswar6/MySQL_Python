@@ -1,28 +1,31 @@
 """ Insert Data into Tables """
 # Example 1: Inserting Single Row
 
-# importing required libraries
+# Connect to StudentDB database
 import mysql.connector
  
 dataBase = mysql.connector.connect(
   host ="localhost",
   user ="root",
   passwd ="Akhil@0109",
-  database = "akhildb"
+  database = "studentdb"
 )
 
-# preparing a cursor object
+# Create a cursor object
 cursorObject = dataBase.cursor()
  
-sql = "INSERT INTO student1 (NAME, BRANCH, ROLL, SECTION, AGE)\
-VALUES (%s, %s, %s, %s, %s)"
-val = ("Akhileswar", "CSC", "07", "B", "19")
+insert_query = """
+INSERT INTO students (name, branch, roll_no, marks) 
+VALUES ('Akhileswar', 'CSE', 101, 95)"""
   
-cursorObject.execute(sql, val)
-dataBase.commit()
-  
-# disconnecting from server
-dataBase.close()
+cursorObject.execute(insert_query)
 
+# Commit the changes to make sure data is saved
+dataBase.commit()
+
+print("✅ Record inserted successfully into 'students' table!")
+
+# Close the connection
+dataBase.close()
 
 
