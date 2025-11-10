@@ -8,26 +8,28 @@
 
 """ Example: Select data from MySQL table using Python"""
 
-# importing required libraries
 import mysql.connector
  
+# Connect to the StudentDB database 
 dataBase = mysql.connector.connect(
   host ="localhost",
   user ="root",
   passwd ="Akhil@0109",
-  database = "akhildb"
+  database = "studentdb"
 )
 
-# preparing a cursor object
+# Create a cursor object
 cursorObject = dataBase.cursor()
  
-query = "SELECT Name, Branch FROM student1"
-cursorObject.execute(query)
+# Execute the SQL query
+sql_query = "SELECT student_id,name, branch FROM students"
+cursorObject.execute(sql_query)
   
 myresult = cursorObject.fetchall()
   
-for x in myresult:
-    print(x)
+print("🎓 Student Records:") 
+for row in myresult:
+    print(row)
 
 # disconnecting from server
 dataBase.close()
