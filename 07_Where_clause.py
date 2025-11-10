@@ -3,24 +3,25 @@ You can fetch, delete or update a particular set of data in MySQL database by us
 
 # Example: Where clause in MySQL using Python
 
-# importing required libraries
 import mysql.connector
  
+# Connect to the studentdb database 
 dataBase = mysql.connector.connect(
   host ="localhost",
   user ="root",
   passwd ="Akhil@0109",
-  database = "akhildb"
+  database = "studentdb"
 )
 
-# preparing a cursor object
+# Create a cursor object
 cursorObject = dataBase.cursor()
  
-query = "SELECT * FROM student1 where age >=20"
-cursorObject.execute(query)
+sql_query = "SELECT * FROM students where marks >=90"
+cursorObject.execute(sql_query)
   
 myresult = cursorObject.fetchall()
   
+print("🎓 Student Records:")
 for x in myresult:
     print(x)
 
