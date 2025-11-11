@@ -3,24 +3,25 @@ By default, SQL gives out the required number of records starting from the top b
 
 # Example: Limit clause in MySQL using Python
 
-# importing required libraries
 import mysql.connector
  
+# Connect to the studentdb database 
 dataBase = mysql.connector.connect(
   host ="localhost",
   user ="root",
   passwd ="Akhil@0109",
-  database = "akhildb"
+  database = "studentdb"
 )
 
-# preparing a cursor object
+# Create a cursor object
 cursorObject = dataBase.cursor()
  
-query = "SELECT * FROM student1 LIMIT 5 OFFSET 3"
+query = "SELECT * FROM students LIMIT 3 OFFSET 2"
 cursorObject.execute(query)
   
 myresult = cursorObject.fetchall()
   
+print("🎓 Student Records:")  
 for x in myresult:
     print(x)
 
