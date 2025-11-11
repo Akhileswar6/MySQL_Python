@@ -4,24 +4,25 @@ By default, it is always in ascending order unless “DESC” is mentioned, whic
 
 # Example: Order By clause in MySQL using Python
 
-# importing required libraries
 import mysql.connector
  
+# Connect to the studentdb database 
 dataBase = mysql.connector.connect(
   host ="localhost",
   user ="root",
   passwd ="Akhil@0109",
-  database = "akhildb"
+  database = "studentdb"
 )
 
-# preparing a cursor object
+# Create a cursor object
 cursorObject = dataBase.cursor()
  
-query = "SELECT * FROM student1 ORDER BY NAME DESC"
-cursorObject.execute(query)
+sql_query = "SELECT * FROM students ORDER BY marks DESC"
+cursorObject.execute(sql_query)
   
 myresult = cursorObject.fetchall()
   
+print("🎓 Student Records:")  
 for x in myresult:
     print(x)
 
