@@ -2,22 +2,25 @@
 
 # Example: Delete Data from MySQL table using Python
 
-# importing required libraries
 import mysql.connector
  
+# Connect to the studentdb database 
 dataBase = mysql.connector.connect(
   host ="localhost",
   user ="root",
   passwd ="Akhil@0109",
-  database = "akhildb"
+  database = "studentdb"
 )
 
-# preparing a cursor object
+# Create a cursor object
 cursorObject = dataBase.cursor()
  
-query = "DELETE FROM student1 WHERE NAME = 'Nikhil'"
-cursorObject.execute(query)
+sql_query = "DELETE FROM students WHERE NAME = 'Rohit'"
+cursorObject.execute(sql_query)
+
 dataBase.commit()
+
+print(f"✅ Record deleted successfully! Rows affected: {cursorObject.rowcount}")
 
 # disconnecting from server
 dataBase.close()
